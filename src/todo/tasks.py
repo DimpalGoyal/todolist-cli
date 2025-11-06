@@ -26,6 +26,22 @@ def add_tasks():
     print(f"task '{desc}' added successfully.")
 
 
-"""
 def mark_complete():
-    pass  """
+    tasks_data = load_tasks()
+    tasks = tasks_data["tasks"]
+
+    if not tasks:
+        print("no task to mark")
+        return
+    
+    view_tasks()
+    try:
+        num = int(input("Enter the task number to mark complete: ").strip())
+        if 1 <= num <= len(tasks):
+            tasks[num - 1]["complete"] = True
+            save_tasks(tasks_data)
+            print(f'task {num} marked as complete.')
+        else:
+            print("Invalid task number.")
+    except ValueError:
+        print("Please enter a valid number.")
