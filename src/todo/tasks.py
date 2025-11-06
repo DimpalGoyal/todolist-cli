@@ -12,9 +12,19 @@ def view_tasks():
         status = "[completed]" if task["complete"] else "[pending]"
         print(f"{idx}. {task['description']} {status}")
 
-"""
+
 def add_tasks():
-    pass"""
+    tasks = load_tasks()
+    desc = input("enter a new task: ").strip()
+
+    if not desc:
+        print("task cannot be empty.")
+        return    
+    
+    tasks["tasks"].append({"description": desc, "complete": False})
+    save_tasks(tasks)
+    print(f"task '{desc}' added successfully.")
+
 
 """
 def mark_complete():
